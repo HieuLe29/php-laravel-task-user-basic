@@ -1,0 +1,249 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/register:
+    post:
+      summary: ''
+      operationId: postApiRegister
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: wnydy
+                  nullable: false
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: malvina02@example.org
+                  nullable: false
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: '"&pHC@%Cqm'
+                  nullable: false
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: xraynor@example.net
+                  nullable: false
+                password:
+                  type: string
+                  description: ''
+                  example: dolor
+                  nullable: false
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: ''
+      operationId: postApiLogout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/tasks:
+    get:
+      summary: ''
+      operationId: getApiTasks
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiTasks
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: wkbwxhph
+                  nullable: false
+                description:
+                  type: string
+                  description: ''
+                  example: 'Corporis ea aliquam dolores sed eaque et porro.'
+                  nullable: true
+                status:
+                  type: string
+                  description: ''
+                  example: completed
+                  nullable: false
+                  enum:
+                    - pending
+                    - in_progress
+                    - completed
+                due_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-11-26T09:17:35'
+                  nullable: true
+                priority:
+                  type: integer
+                  description: 'Must be at least 1. Must not be greater than 5.'
+                  example: 4
+                  nullable: false
+              required:
+                - title
+                - status
+                - priority
+      security: []
+  '/api/tasks/{id}':
+    get:
+      summary: ''
+      operationId: getApiTasksId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiTasksId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: idjwuycwazzrfznnuisdb
+                  nullable: false
+                description:
+                  type: string
+                  description: ''
+                  example: 'Deserunt est minima inventore id.'
+                  nullable: true
+                status:
+                  type: string
+                  description: ''
+                  example: pending
+                  nullable: false
+                  enum:
+                    - pending
+                    - in_progress
+                    - completed
+                due_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-11-26T09:17:35'
+                  nullable: true
+                priority:
+                  type: integer
+                  description: 'Must be at least 1. Must not be greater than 5.'
+                  example: 4
+                  nullable: false
+              required:
+                - title
+                - status
+                - priority
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiTasksId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
